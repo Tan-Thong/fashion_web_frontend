@@ -1,28 +1,25 @@
-
-
 #header {
+    box-sizing: border-box;
     position: fixed;
-    top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    top: 0;
+    width: calc(100% - 20px) !important;
     background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.8);
     height: 66px;
-    width: calc(100% - 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
     padding: 0 30px;
-    left: 10px;
-    transition: opacity 0.3s ease;
-    transform: translateY(40px);
+    border: #fff solid 1px;
+    z-index: 10000;
+    transform: translateY(0); /* Mặc định hiển thị */
 }
 
-.placeholder {
-    height: 800px; /* Giới hạn sticky */
+.nav-left > .nav-component, .nav-right > .nav-component {
+    height: 100%;
+    line-height: 66px;
 }
-
-.hidden {
-    transform: translateY(-100%); /* Ẩn header khi cuộn xuống */
-    opacity: 0; /* Làm mờ header */
-  }
 
 .logo {
     height: 20px;
@@ -42,13 +39,48 @@
     align-items: center;
 }
 
-.nav-left a {
-    color: #fff;
+.header-extensive {
+    cursor: pointer;
 }
 
-.nav-component li {
-    height: 100%;
-    margin-left: 28px;
+.header-extensive-btn {
+    color: inherit;
+    display: inline;
+    position: relative;
+}
+
+.header-extensive-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 0;
+    background-color: #4d4d4d;
+    transition: 0.5s;
+}
+
+.header-extensive:hover .header-extensive-btn::after {
+    width: 100%;
+}
+
+
+.nav-right {
+    color: #000 !important;
+    z-index: 10000;
+}
+
+.nav-right .nav-component .header-extensive:last-child {
+    margin-left: 14px;
+    padding: 0;
+}
+
+.nav-component .header-extensive:first-child {
+    margin-left: 14px;
+}
+
+.nav-component .header-extensive {
+    padding: 0 14px;
 }
 
 #cart {
@@ -59,4 +91,95 @@
     border-radius: 50%;
     height: 24px;
     width: 24px;
+}
+
+.sub-menu {
+    background: #fff;
+    max-height: calc(var(--vh, 1vh)* 100 + -20px);
+    padding: 70px 30px 30px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    border: #eaeaea solid 1px;
+    border-top: none;
+    transition: transform 1s;
+    padding-bottom: 68px;
+    z-index: 10;
+}
+
+.sub-menu-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+    transition: visibility 0.3s;
+}
+
+.sub-menu-item {
+    display: list-item;
+    opacity: 0;
+}
+
+.sub-menu-item .img-wrapper {
+    width: 100%;
+    padding-bottom: 72.2222222222%;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    background: #eaeaea;
+}
+
+.img-wrapper > * {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sub-menu-list .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sub-menu-list .text-wrapper > * {
+    line-height: 26px;
+    font-size: 14px;
+}
+
+.sub-menu-list .text-wrapper .title {
+    margin-top: 14px;
+    font-weight: 600;
+}
+
+.nav-left .header-extensive:hover .sub-menu, .nav-left .header-extensive:hover .sub-menu-item {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sub-menu-item .extensive-btn {
+    color: inherit;
+    display: inline;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.sub-menu-item .extensive-btn::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #4d4d4d;
+    transition: 0.5s;
+}
+
+.sub-menu-item .extensive-btn:hover::after {
+    width: 0;
 }

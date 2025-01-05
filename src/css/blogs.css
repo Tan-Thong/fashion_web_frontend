@@ -1,0 +1,54 @@
+.blog-wrapper {
+    margin: 105px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog-section {
+    position: relative;
+    height: 764px;
+    width: calc((100% - 32px * 2) / 3);
+}
+
+.blog-section .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    left: 32px;
+    right: 32px;
+    bottom: 52px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.blog-section .text-wrapper .title {
+    font-size: 23px;
+}
+
+.blog-section .text-wrapper .read-link {
+    color: #fff;
+}
+
+.extensive-btn {
+    color: inherit;
+    display: inline;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.extensive-btn::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+    transition: 0.5s;
+}
+
+.extensive-btn:hover:after {
+    width: 0;
+}

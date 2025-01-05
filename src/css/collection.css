@@ -1,3 +1,29 @@
+.selection .extensive-btn {
+    color: inherit;
+    display: inline;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.selection .extensive-btn::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #4d4d4d;
+    transition: 0.5s;
+}
+
+.selection .extensive-btn:hover:after {
+    width: 0;
+}
+
+.selection {
+    margin: 105px 40px;
+}
+
 .selection .shop {
     display: flex;
     justify-content: space-between;

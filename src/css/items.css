@@ -1,0 +1,17 @@
+
+.shop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);;
+    column-gap: 20px;
+    row-gap: 90px;
+    margin: 0 40px;
+    margin-top: 120px;
+}
+
+.img img {
+    width: 100%;
+}
+
+.product .infor {
+    margin-top: 12px;
+}

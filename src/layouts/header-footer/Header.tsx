@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./../../css/header.css";
 
-function Header() {
+
+interface HeaderInterface {
+  color : string;
+  logoFilter : string;
+}
+
+const Header : React.FC<HeaderInterface> = (props) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [style, setStyle] = useState({
     transform: "translateY(40px)",
     background: "transparent",
-    color: "#fff",
-    logoFilter: "invert(1)",
+    color: props.color,
+    logoFilter: props.logoFilter,
     border: "none",
   });
 
@@ -19,8 +25,8 @@ function Header() {
       if (currentScrollY < 40) {
         newStyle.transform = "translateY(40px)";
         newStyle.background = "transparent"; // Nền trong suốt
-        newStyle.color = "#fff"; // Chữ màu trắng
-        newStyle.logoFilter = "invert(1)"; // Đảo màu logo
+        newStyle.color = props.color; // Chữ màu trắng
+        newStyle.logoFilter = props.logoFilter; // Đảo màu logo
         newStyle.border = "none";
       } else if (currentScrollY >= 40 && currentScrollY < 250) {
         newStyle.transform = "translateY(10px)";
@@ -62,15 +68,14 @@ function Header() {
       }}
     >
       <div className="nav-left">
-        <img
-          className="logo"
-          src={"./../images/LVTT_Logo_Ver_2.png"}
-          alt=""
-          style={{
-            filter: style.logoFilter,
-            transition: "filter 0.3s ease",
+        <a href="/">
+          <img
+            className="logo"
+            src={"./../images/LVTT_Logo_Ver_2.png"}
+            alt=""
+            style={{filter: style.logoFilter, transition: "filter 0.3s ease",
           }}
-        />
+        /></a>
         <ul className="nav-component">
           <li className="header-extensive">
             <a className="header-extensive-btn" href="#">Footwear</a>

@@ -1,5 +1,3 @@
-import React from "react";
-
 async function MyRequest(endPoint : string) {
     const response = await fetch(endPoint);
 

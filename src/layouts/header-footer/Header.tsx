@@ -93,12 +93,12 @@ const Header : React.FC<HeaderInterface> = (props) => {
                   </a>
                 </li>
                 <li className="sub-menu-item">
-                  <a href="">
+                  <a href="/collection/sneakers">
                     <div className="img-wrapper">
                       <img className="image" src={"./../images/categories/Shoes/Shoes_Submenu_Banner_2.webp"} alt="" />
                     </div>
                     <div className="text-wrapper">
-                      <p className="title">All Footwear</p>
+                      <p className="title">Sneakers</p>
                       <p className="desc">Discover all wardrobe essentials.</p>
                     </div>
                   </a>

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./../../../css/collection.css"
+import CategoryModel from "../../../models/CategoryModel";
+import { GetCollection } from "../../../api/CategoryAPI";
 
 function Collection() {
+    const [collection, setCollection] = useState<CategoryModel[]>([]);
+
+    useEffect(() => {
+        GetCollection().then(
+            collectionData => {
+                setCollection(collectionData);
+            }
+        ).catch(
+
+        );
+    }, []);
+
     return(
         <div className="selection">
             <div className="shop">
@@ -9,15 +23,21 @@ function Collection() {
                 <a href="" className="extensive-btn">Shop all</a>
             </div>
             <div className="list-categories">
-                <a href="" className="category">
-                    <img className="image" src={"./../images/categories/Sneakers.webp"} alt="" />
-                    <div className="infor">
-                        <p className="title"><b>Sneakers</b></p>
-                        <p className="desc">Sneakers made like shoes.</p>
-                    </div>
-                </a>
 
-                <a href="" className="category">
+                {
+                    collection.map((category) => (
+                        <a href="/collection/sneakers" className="category">
+                            <img className="image" src={category.image} alt="" />
+                            <div className="infor">
+                                <p className="title"><b>{category.categoryName}</b></p>
+                                <p className="desc">{category.description}</p>
+                            </div>
+                        </a>
+                    ))
+                }
+                
+
+                {/* <a href="" className="category">
                     <img className="image" src={"./../images/categories/T_Shirts.webp"} alt="" />
                     <div className="infor">
                         <p className="title"><b>T-Shirts</b></p>
@@ -71,7 +91,7 @@ function Collection() {
                         <p className="title"><b>Polo Shirts</b></p>
                         <p className="desc">Providing comfort without losing shape.</p>
                     </div>
-                </a>
+                </a> */}
             </div>
         </div>
     );

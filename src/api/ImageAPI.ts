@@ -1,4 +1,3 @@
-import React from "react";
 import MyRequest from "./MyRequest";
 import ImageModel from "../models/ImageModel";
 

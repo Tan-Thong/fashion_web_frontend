@@ -32,10 +32,10 @@ const ListProduct : React.FC = () => {
     return(
         <div className="shop">
             {
-                    listProduct.map((product , i = 0) => (
-                        <Product product = {product} />
-                    ))
-                }
+                listProduct.map((product) => (
+                    <Product product = {product} />
+                ))
+            }
 
         </div>
     );

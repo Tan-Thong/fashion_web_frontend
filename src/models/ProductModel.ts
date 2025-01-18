@@ -1,18 +1,24 @@
+import ImageModel from "./ImageModel";
+
 class ProductModel {
     productID : number;
     productName : string;
     material? : string;
     price : number;
     description? : string;
-    active : boolean;
+    colorID : string;
+    colorName : string;
+    images : ImageModel[]; 
 
-    constructor(productID : number, productName : string, material : string, price : number, description : string, active : boolean) {
+    constructor(productID : number, productName : string, material : string, price : number, description : string, colorID : string, colorName : string, images : ImageModel[]) {
         this.productID = productID
         this.productName = productName
         this.material = material
         this.price = price
         this.description = description
-        this.active = active
+        this.colorID = colorID
+        this.colorName = colorName
+        this.images = images
     }
 
 }

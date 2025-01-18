@@ -2,6 +2,8 @@ import React from "react";
 import "./../../css/items.css"
 import ListProduct from "./ListProduct";
 import Header from "../header-footer/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductDetailPage from "../product-detail-page/ProductDetailPage";
 
 function ProductPage() {
     return(

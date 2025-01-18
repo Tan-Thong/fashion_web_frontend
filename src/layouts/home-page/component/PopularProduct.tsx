@@ -37,7 +37,7 @@ const PopularProduct : React.FC<PopularProductInterface> = (props) => {
     let iconImage : string = "";
     Images.map((image) => {
         if(image.icon) {
-            iconImage = image.base64;
+            iconImage = image.url;
         }
     });
     

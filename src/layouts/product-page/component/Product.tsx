@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { GetImagesByProduct } from "../../../api/ImageAPI";
 import ProductModel from "../../../models/ProductModel";
 import ImageModel from "../../../models/ImageModel";
+import { GetProductDetailByProduct } from "../../../api/ProductDetailAPI";
+import ProductDetailModel from "../../../models/ProductDetailModel";
 
 interface ProductInterface {
     product : ProductModel;
@@ -22,8 +24,7 @@ const Product : React.FC<ProductInterface> = (props) => {
         ).catch(
 
         );
-        }, []
-    );
+    }, []);
     
     if(loading) {
         return(
@@ -36,13 +37,13 @@ const Product : React.FC<ProductInterface> = (props) => {
     let iconImage : string = "";
     Images.map((image) => {
         if(image.icon) {
-            iconImage = image.base64;
+            iconImage = image.url;
         }
     });
 
     return(
         <div className="product">
-            <a href="">
+            <a href={`/products/${productID}`}>
                 <div className="img">
                     {/* <i th:if="${product.stock == 0}" id="soldoutIcon" className="soldout"></i> */}
                     <img src={iconImage} alt={props.product.productName} />

@@ -9,19 +9,17 @@ import ProductDetailPage from "./layouts/product-detail-page/ProductDetailPage";
 import Header from "./layouts/header-footer/Header";
 
 function App() {
-
-  GetProducts().then().catch();
-
   return (
     <BrowserRouter>
       <div className="content">
         <div className="notify">Holiday Sale. Up to 50% OFF — Don't sleep on it.</div>
-        <Header color="#000" logoFilter="invert(0)" />
+        {/* <Header color="#000" logoFilter="invert(0)" /> */}
         <Routes>
-          {/* <Route path="/" element={<HomePage />} /> */}
-          {/* <Route path="/collection/sneakers" element={<ProductPage />} /> */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/collection/sneakers" element={<ProductPage />} />
+          <Route path="/products/:productID" element={<ProductDetailPage />} />
         </Routes>
-        <ProductDetailPage />
+        {/* <ProductDetailPage /> */}
         <Footer />
       </div>
     </BrowserRouter>

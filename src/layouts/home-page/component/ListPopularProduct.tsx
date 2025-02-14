@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./../../../css/popular-product.css";
 import ProductModel from "../../../models/ProductModel";
-import { GetProducts } from "../../../api/ProductAPI";
+import { getProducts } from "../../../api/ProductAPI";
 import PopularProduct from "./PopularProduct";
 
 interface FavoriteProductProps {
@@ -14,7 +14,7 @@ const ListPopularProduct: React.FC<FavoriteProductProps> = (props) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        GetProducts()
+        getProducts()
             .then((productData) => {
                 setListProduct(productData);
                 setLoading(false);

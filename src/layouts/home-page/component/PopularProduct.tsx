@@ -10,12 +10,13 @@ interface PopularProductInterface {
 
 const PopularProduct : React.FC<PopularProductInterface> = (props) => {
     const productID : number = props.product.productID;
+    const colorID : string = props.product.colorID;
     const [Images, setImages] = useState<ImageModel[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        GetImagesByProduct(productID).then(
+        GetImagesByProduct(productID, colorID).then(
             imageData => {
                 setImages(imageData);
                 setLoading(false);

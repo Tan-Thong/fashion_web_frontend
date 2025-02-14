@@ -1,23 +1,27 @@
 import MyRequest from "./MyRequest";
 import ImageModel from "../models/ImageModel";
 
-export async function GetImagesByProduct(productID : number) : Promise<ImageModel[]> {
+export async function GetImagesByProduct(productID : number, colorID : string) : Promise<ImageModel[]> {
     const result : ImageModel[] = [];
 
-    // const endPoint = `http://localhost:8080/products/${productID}/product-detail/1/images`;
-    const endPoint = `http://localhost:8080/products/${productID}/images`
+    // console.log("productID:", productID);
+    // console.log("colorID:", colorID);
+    const newColorID = colorID.replace("#", "%23");
+
+    const endPoint = `http://localhost:8080/images?productID=${productID}&colorID=${newColorID}`;
+    // const endPoint = `http://localhost:8080/products/${productID}/images`
 
     const response = await MyRequest(endPoint);
 
-    const responseData = response._embedded.imgs;
+    // const responseData = response._embedded.imgs;
 
-    for (const key in responseData) {
+    for (const key in response) {
         result.push({
-            imageID : responseData[key].imageID,
-            imageName : responseData[key].imageName,
-            icon : responseData[key].icon,
-            url : responseData[key].url,
-            base64 : responseData[key].base64
+            imageID : response[key].imageID,
+            imageName : response[key].imageName,
+            icon : response[key].icon,
+            url : response[key].url,
+            base64 : response[key].base64
         });
     }
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css"
 import Footer from "./layouts/header-footer/Footer";
 import HomePage from "./layouts/home-page/HomePage";
-import { GetProducts } from "./api/ProductAPI";
 import ProductPage from "./layouts/product-page/ProductPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductDetailPage from "./layouts/product-detail-page/ProductDetailPage";

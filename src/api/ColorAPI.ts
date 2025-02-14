@@ -9,3 +9,12 @@ export async function getColorByProductDetail(productDetailID : number) : Promis
 
     return response;
 }
+
+export async function getColorByProduct(productID : number) : Promise<ColorModel[]> {
+    const result : ColorModel[] = [];
+    const endPoint = `http://localhost:8080/products/${productID}/colors`
+
+    const response = await MyRequest(endPoint);
+
+    return response;
+}

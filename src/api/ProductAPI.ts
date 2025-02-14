@@ -1,34 +1,38 @@
 import ProductModel from "../models/ProductModel";
+import { getColorByProduct } from "./ColorAPI";
 import MyRequest from "./MyRequest";
 
-export async function GetProducts() : Promise<ProductModel[]> {
+export async function getProducts() : Promise<ProductModel[]> {
     const result : ProductModel[] = [];
     // EndPoint
-    const endPoint : string = "http://localhost:8080/products";
+    const endPoint : string = "http://localhost:8080/test-products";
+    // const endPoint : string = "http://localhost:8080/product-details";
 
     // Call function Request
     const response = await MyRequest(endPoint);
 
-    const responseData = response._embedded.products;
+    // const responseData = response._embedded.products;
+    console.log(response)
 
-    for (const key in responseData) {
+    for (const key in response) {
         
         result.push({
-            productID : responseData[key].productID,
-            productName : responseData[key].productName,
-            material : responseData[key].material,
-            price : responseData[key].price,
-            description : responseData[key].description,
-            colorID : responseData[key].colorID,
-            colorName : responseData[key].colorName,
-            images : responseData[key].images,
+            productDetailID : response[key].productDetailID,
+            stockQuantity : response[key].stockQuantity,
+            productID : response[key].productID,
+            productName : response[key].productName,
+            material : response[key].material,
+            price : response[key].price,
+            description : response[key].description,
+            colorID : response[key].colorID,
+            colorName : response[key].colorName,
         });
     }
 
     return result;
 }
 
-export async function GetProductByID(productID : number) : Promise<ProductModel> {
+export async function getProductByID(productID : number) : Promise<ProductModel> {
     // EndPoint
     const endPoint : string = `http://localhost:8080/products/${productID}`;
 

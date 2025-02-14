@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductModel from "../../models/ProductModel";
-import { GetProducts } from "../../api/ProductAPI";
+import { getProducts } from "../../api/ProductAPI";
 import Product from "./component/Product";
 
 const ListProduct : React.FC = () => {
@@ -10,7 +10,7 @@ const ListProduct : React.FC = () => {
 
 
     useEffect(() => {
-            GetProducts().then(
+            getProducts().then(
                 productData => {
                     setListProduct(productData);
                     setLoading(false);
@@ -33,7 +33,7 @@ const ListProduct : React.FC = () => {
         <div className="shop">
             {
                 listProduct.map((product) => (
-                    <Product product = {product} />
+                    <Product product = {product} key={product.productDetailID} />
                 ))
             }
 
